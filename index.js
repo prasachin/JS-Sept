@@ -188,3 +188,95 @@
 // let resReduce = a.reduce(callMe, 10);
 
 // console.log(resReduce);
+// let str = "i am a string";
+// let str1 = 'i am a string';
+// let str2 = new String("I am a string");
+
+// let str4 = "STRING";
+
+// let str3 = `I am a string ${str4}`;
+// console.log(typeof str3);
+// console.log(str3);
+
+// let str = "sachin";
+
+// str[0] = "S";
+// str = str[0].toUpperCase() + str.slice(1, 4);
+
+// console.log(str[0]);
+// let st = str.slice(-3, -2);
+// console.log(st);
+
+// console.log(str.length)
+// let st = str.substring(1, 4);
+// console.log(st);
+
+// let str = "sachinach";
+
+// let st = "ach";
+
+// // console.log(str.includes(st));
+// console.log(str.indexOf(st, 2));
+
+// let str = "i am a string";
+// let words = str.split(" ");
+// // console.log(words);
+// for (let i = 0; i < words.length; i++) {
+//   let word = words[i];
+//   word = word[0].toUpperCase() + word.slice(1);
+//   words[i] = word;
+// //   console.log(word);
+// }
+
+// console.log(words.join(" "));
+// let emoji = "🚜";
+// let char = "a";
+
+// console.log(typeof emoji);
+// console.log(char.length);
+// console.log(emoji.length);
+
+// let obj = { name: "sachin", age: 30, address: { city: "pune", state: "MH" } };
+
+// let obj = new Object();
+// console.log(typeof obj.name);
+// console.log(obj);
+// function User(name, age, address) {
+//   this.name = name;
+//   this.age = age;
+//   this.address = address;
+// }
+
+// class User {
+//   constructor(name, age, address) {
+//     this.name = name;
+//     this.age = age;
+//     this.address = address;
+//   }
+// }
+
+// let user1 = new User("sachin", 30, { city: "pune", state: "MH" });
+// let user2 = new User("rahul", 25, { city: "mumbai", state: "MH" });
+
+// console.log(user1);
+// console.log(user2);
+
+
+// let obj = { name: "sachin", age: 30, address: { city: "pune", state: "MH" } };
+
+// console.log(obj.address);
+// console.log(obj["address"]);
+// console.log(Object.keys(obj)); 
+// obj.password = "123456";
+// console.log(obj);
+// delete obj.password;
+// console.log(obj);
+
+// let obj1 = obj;
+
+// console.log(obj1.name);
+// obj1.name = "rahul";
+// console.log(obj1.name);
+// console.log(obj.name);
+
+let obj = { name: "sachin", age: 30, address: { city: "pune", state: "MH" } };
