@@ -261,12 +261,11 @@
 // console.log(user1);
 // console.log(user2);
 
-
 // let obj = { name: "sachin", age: 30, address: { city: "pune", state: "MH" } };
 
 // console.log(obj.address);
 // console.log(obj["address"]);
-// console.log(Object.keys(obj)); 
+// console.log(Object.keys(obj));
 // obj.password = "123456";
 // console.log(obj);
 // delete obj.password;
@@ -279,4 +278,79 @@
 // console.log(obj1.name);
 // console.log(obj.name);
 
-let obj = { name: "sachin", age: 30, address: { city: "pune", state: "MH" } };
+// let obj = {
+//   name: "sachin",
+//   age: 30,
+//   address: { city: "pune", state: "MH" },
+//   password: "123456",
+// };
+
+// console.log(obj);
+// obj.password = "new password";
+// delete obj.password;
+// console.log(obj);
+
+// function parent(){ // scope x
+
+//     let a = 10;
+
+//     function child(){
+//         console.log(a);
+//     }
+// }
+
+// let obj = {
+//   name: "sachin",
+//   age: 30,
+//   address: { city: "pune", state: "MH" },
+// };
+// obj.password = "123456";
+// console.log(Object.getOwnPropertyDescriptor(obj, "name"));
+
+// Object.defineProperty(obj, "password", {
+//   value: "123456",
+//   writable: false,
+//   enumerable: true,
+//   configurable: false,
+// });
+
+// console.log(obj);
+// // console.log(Object.keys(obj));
+// // obj.password = "new password";
+// delete obj.password;
+// console.log(obj);
+
+// let obj = {
+//   name: "sachin",
+//   age: 30,
+//   address: { city: "pune", state: "MH" },
+//   password: "123456",
+// };
+
+// // Object.freeze(obj);
+// Object.seal(obj);
+
+// console.log(obj);
+// obj.address = "new password";
+// // delete obj.password;
+// // obj.newprop = "new prop";
+// console.log(obj);
+
+// let obj = {};
+// let animal = { hasForLegs: true };
+
+// let dog = Object.create(animal);
+// dog.name = "tommy";
+// dog.canBark = "yes";
+
+// // console.log(Object.getPrototypeOf(dog));
+// console.log(dog);
+
+let parent  = {x:10};
+
+let child = Object.create(parent);
+
+// console.log(child.x);
+child.x = 20;
+// console.log(parent.x);
+console.log(child.x);

@@ -1,0 +1,12 @@
+<users>
+  <user1>
+    <id>1</id>
+    <name>John Doe</name>
+    <email>john.doe@example.com</email>
+    <hobbies>
+      <hobby>reading</hobby>
+      <hobby>traveling</hobby>
+      <hobby>swimming</hobby>
+    </hobbies>
+  </user1>
+</users>
