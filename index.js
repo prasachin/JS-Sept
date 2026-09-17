@@ -346,11 +346,88 @@
 // // console.log(Object.getPrototypeOf(dog));
 // console.log(dog);
 
-let parent  = {x:10};
+// let parent  = {x:10};
 
-let child = Object.create(parent);
+// let child = Object.create(parent);
 
+// // console.log(child.x);
+// child.x = 20;
+// // console.log(parent.x);
 // console.log(child.x);
-child.x = 20;
-// console.log(parent.x);
-console.log(child.x);
+// let json = {};
+
+// json.name = "sachin";
+// console.log(json);
+
+// let payload = {
+//   name: "sachin",
+//   age: 30,
+//   address: { city: "pune", state: "MH" },
+// };
+// console.log(typeof payload);
+// let jsnStr = JSON.stringify(payload);
+
+// // console.log(typeof jsnStr);
+// console.log(jsnStr);
+// let requestBody = JSON.parse(jsnStr);
+// console.log(requestBody.address);
+
+// let payload = {
+//   name: "sachin",
+//   age: 30,
+//   address: { city: "pune", state: "MH" },
+// };
+
+// let payload2 = Object.create(payload);
+// payload2.class = "9th";
+
+// // console.log(payload2.name);
+// // console.log(payload2.class);
+
+// let jsnstr = JSON.stringify(payload2);
+// console.log(jsnstr);
+
+// let req = JSON.parse(jsnstr);
+// console.log(req.name);
+// console.log(req.class);
+// let payload = {
+//   name: "sachin",
+//   age: 30,
+//   address: { city: "pune", state: "MH" },
+// };
+
+// Object.defineProperty(payload, "password", {
+//   value: "123456",
+//   writable: true,
+//   enumerable: false,
+//   configurable: true,
+// });
+// console.log(payload.password);
+// let jsnstr = JSON.stringify(payload);
+// console.log(jsnstr);
+
+// let req = JSON.parse(jsnstr);
+// console.log(req.password);
+// let payload = {
+//   name: "sachin",
+//   age: 30,
+//   address: { city: "pune", state: "MH" },
+//   greet: function () {
+//     console.log("Hello");
+//   },
+//   intro: undefined,
+// };
+
+// // payload.greet()
+// console.log(payload);
+// let jsnstr = JSON.stringify(payload);
+// console.log(jsnstr);
+// let req = JSON.parse(jsnstr);
+// console.log(req);
+
+// let obj = {};
+// obj.self = obj;
+
+// console.log(obj);
+// let jsnstr = JSON.stringify(obj);
+// console.log(jsnstr);
