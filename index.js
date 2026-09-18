@@ -431,3 +431,33 @@
 // console.log(obj);
 // let jsnstr = JSON.stringify(obj);
 // console.log(jsnstr);
+
+// let el = document.getElementById("title");
+// console.log(el);
+
+// let els = document.getElementsByClassName("listElement");
+// console.log(els);
+// els.forEach((ele) => {
+//   console.log(ele);
+// });
+
+// let els = document.getElementsByTagName("li");
+// console.log(els);
+
+// let ele = document.querySelector(".listElement");
+// console.log(ele);
+
+// let ele = document.querySelectorAll(".listElement");
+// // console.log(ele);
+// ele.forEach((ele) => {
+//   console.log(ele);
+// });
+
+
+// let ele = document.getElementById("title");
+// console.log(ele.textContent);
+// ele.textContent = "I am a new title";
+// console.log(ele.textContent);
+
+// ele.innerHTML = "<h1>I am a new title</h1>";
+// ele.textContent = "I am a new title";
