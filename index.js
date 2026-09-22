@@ -511,3 +511,19 @@
 //     console.log("I am not clicked but mouse is over me");
 // });
 
+
+// let divContainer = document.getElementById("title");
+// divContainer.style.width = "200px";
+// divContainer.style.color = "blue";
+
+// let virtualDom = document.createDocumentFragment();
+
+// for (let i = 0; i < 1000; i++) {
+//   let ele = document.createElement("div");
+//   ele.textContent = "I am a new div";
+//   ele.setAttribute("class", "newDiv");
+//   virtualDom.appendChild(ele);
+// }
+
+// document.body.appendChild(virtualDom);
+
