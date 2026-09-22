@@ -453,7 +453,6 @@
 //   console.log(ele);
 // });
 
-
 // let ele = document.getElementById("title");
 // console.log(ele.textContent);
 // ele.textContent = "I am a new title";
@@ -461,3 +460,54 @@
 
 // ele.innerHTML = "<h1>I am a new title</h1>";
 // ele.textContent = "I am a new title";
+// let ele = document.getElementById("title");
+// console.log(ele);
+// ele.style.backgroundColor = "red";
+// ele.style.color = "white";
+// ele.style.fontSize = "30px";
+// ele.style.padding = "10px";
+// ele.style.textAlign = "center";
+
+// let ele = document.getElementById("title");
+// console.log(ele);
+// // ele.setAttribute("id", "sachin");
+// ele.removeAttribute("class");
+// // let ele1 = document.getElementById("sachin");
+// console.log(ele);
+
+// console.log(ele.getAttribute("class"));
+// ele.random = "sachin";
+// console.log(ele);
+
+// let ele = document.createElement("div");
+// ele.textContent = "I am a new div";
+// console.log(ele);
+// document.body.appendChild(ele);
+// let divContainer = document.getElementById("divContainer");
+// divContainer.before(ele);
+// ele.setAttribute("class", "newDiv");
+// let el1 = document.getElementsByClassName("newDiv");
+// console.log(el1);
+
+// let divContainer = document.getElementById("divContainer");
+// divContainer.remove();
+
+// for (let i = 0; i < 100; i++) {
+//   let ele = document.createElement("div");
+//   ele.textContent = "I am a new div";
+//   ele.setAttribute("class", "newDiv");
+//   document.body.appendChild(ele);
+// }
+
+// let el = document.getElementById("title");
+// console.log(el);
+// el.addEventListener("click", function (e){
+//     // console.log("I am clicked");
+//     e.preventDefault();
+//     console.log(e);
+// }, true);
+
+// el.addEventListener("mouseover", function (){
+//     console.log("I am not clicked but mouse is over me");
+// });
+
