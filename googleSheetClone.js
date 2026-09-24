@@ -103,7 +103,12 @@ cellContainer.addEventListener(
     let value = cell.textContent;
     let rid = Number(cell.getAttribute("rid"));
     let cid = Number(cell.getAttribute("cid"));
+    if (sheetDB[rid][cid].formula) {
+      removeDependencies(rid, cid);
+    }
     sheetDB[rid][cid].value = value;
+    sheetDB[rid][cid].formula = "";
+    updateChildren(rid, cid);
   },
   true,
 );
@@ -164,7 +169,52 @@ formulaInput.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
     let formula = formulaInput.value;
     if (!selectedCell) return;
+    let address = document.querySelector("#address").value;
+    let { rid, cid } = getRIDCID(address);
+    if (sheetDB[rid][cid].formula) {
+      removeDependencies(rid, cid);
+    }
     let value = evaluateFormula(formula);
-    console.log(value);
+    sheetDB[rid][cid].value = value;
+    sheetDB[rid][cid].formula = formula;
+    addDependencies(rid, cid, formula);
+    updateChildren(rid, cid);
+    updateCellUI(rid, cid, value);
   }
 });
+
+function updateCellUI(rid, cid, value) {
+  let cell = document.querySelector(`.cell[rid="${rid}"][cid="${cid}"]`);
+  if (cell) cell.textContent = value;
+}
+
+function removeDependencies(rid, cid) {
+  let parents = sheetDB[rid][cid].parents;
+  parents.forEach(({ rid: pr, cid: pc }) => {
+    sheetDB[pr][pc].children = sheetDB[pr][pc].children.filter((child) => {
+      return !(child.childRID === rid && child.childCID === cid);
+    });
+  });
+}
+
+function updateChildren(rid, cid) {
+  let children = sheetDB[rid][cid].children;
+  children.forEach((child) => {
+    let cellObj = sheetDB[child.childRID][child.childCID];
+    let newValue = evaluateFormula(cellObj.formula);
+    cellObj.value = newValue;
+    updateCellUI(child.childRID, child.childCID, newValue);
+    updateChildren(child.childRID, child.childCID);
+  });
+}
+
+function addDependencies(childRID, childCID, formula) {
+  let tokens = formula.split(" ");
+  for (let i = 0; i < tokens.length; i++) {
+    if (/^[A-Z][0-9]+/.test(tokens[i])) {
+      let { rid, cid } = getRIDCID(tokens[i]);
+      sheetDB[rid][cid].children.push({ childRID, childCID });
+      sheetDB[childRID][childCID].parents.push({ rid, cid });
+    }
+  }
+}
