@@ -511,7 +511,6 @@
 //     console.log("I am not clicked but mouse is over me");
 // });
 
-
 // let divContainer = document.getElementById("title");
 // divContainer.style.width = "200px";
 // divContainer.style.color = "blue";
@@ -527,3 +526,45 @@
 
 // document.body.appendChild(virtualDom);
 
+// function call() {
+//   //   let start = Date.now();
+//   setTimeout(function () {
+//     console.log("I am called");
+//   }, 0);
+// }
+
+// call();
+
+// console.log("End");
+
+// function callMe() {
+//   console.log("I am called");
+// }
+
+// setTimeout(callMe, 5000);
+// function printUser({ name, age }) {
+//   console.log("I am called with name: ", name, " and age: ", age);
+// }
+
+// function fetchUser(cb) {
+//   setTimeout(function () {
+//     cb({ name: "John", age: 30 });
+//   }, 3000);
+// }
+
+// fetchUser(printUser);
+
+// console.log("I am called after fetchUser");
+
+// let users = getUsers();
+// let orders = getOrders(users[0]);
+// let payments = getPayments(orders);
+// render in UI.
+
+// function getUsers(function (users){
+//     getOrders(users[0], function (orders){
+//         getPayments(orders, function (payments){
+//             renderInUI(payments);
+//         });
+//     });
+// });
