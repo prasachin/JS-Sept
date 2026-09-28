@@ -559,12 +559,71 @@
 // let users = getUsers();
 // let orders = getOrders(users[0]);
 // let payments = getPayments(orders);
-// render in UI.
+// let renderInUI = renderInUI(payments);
 
-// function getUsers(function (users){
-//     getOrders(users[0], function (orders){
-//         getPayments(orders, function (payments){
-//             renderInUI(payments);
-//         });
+// getUsers(function () {
+//   getOrders(users[0], function (orders) {
+//     getPayments(orders, function (payments) {
+//       renderInUI(payments);
 //     });
+//   });
 // });
+
+// let users = getUsers();
+
+// let orders = users.then(getOrders(users[0])).catch((err) => {
+//   console.log("Error in getOrders: ", err);
+// });
+// let payments = orders.then(getPayments(orders)).catch((e) => {
+//   console.log("Error in getPayments: ", e);
+// });
+// payments.then(renderInUI(payments)).catch((e) => {
+//   console.log("Error in renderInUI: ", e);
+// });
+
+// getUsers()
+//   .then(getOrders(users[0]))
+//   .catch((err) => {
+//     console.log("Error in getOrders: ", err);
+//   })
+//   .then(getPayments(orders))
+//   .catch((e) => {
+//     console.log("Error in getPayments: ", e);
+//   })
+//   .then(renderInUI(payments))
+//   .catch((e) => {
+//     console.log("Error in renderInUI: ", e);
+//   });
+
+// let users = fetch("https://jsonplaceholder.typicode.com/users");
+// console.log(users);
+// console.log("I am called after fetch");
+
+// let promise0 = new Promise(function (resolve, reject) {
+//   resolve("I am resolved");
+// });
+
+// let promise = new Promise(function (resolve, reject) {
+  //   let response = { data: "I am data", status: 400 };
+  //   if (response.status === 200) {
+  //     resolve(response.data);
+  //   } else if (response.status === 400) {
+  //     reject("Bad Request");
+  //   } else if (response.status === 500) {
+  //     reject("Internal Server Error");
+  //   }
+    // resolve(promise0);
+//   resolve("5");
+// });
+
+// console.log(promise);
+
+// promise
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((e) => {
+//     console.log(e);
+//   });
+
+
