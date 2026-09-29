@@ -604,15 +604,15 @@
 // });
 
 // let promise = new Promise(function (resolve, reject) {
-  //   let response = { data: "I am data", status: 400 };
-  //   if (response.status === 200) {
-  //     resolve(response.data);
-  //   } else if (response.status === 400) {
-  //     reject("Bad Request");
-  //   } else if (response.status === 500) {
-  //     reject("Internal Server Error");
-  //   }
-    // resolve(promise0);
+//   let response = { data: "I am data", status: 400 };
+//   if (response.status === 200) {
+//     resolve(response.data);
+//   } else if (response.status === 400) {
+//     reject("Bad Request");
+//   } else if (response.status === 500) {
+//     reject("Internal Server Error");
+//   }
+// resolve(promise0);
 //   resolve("5");
 // });
 
@@ -626,4 +626,97 @@
 //     console.log(e);
 //   });
 
+// let p1 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     reject("promise1 is rejected");
+//   }, 1000);
+// });
 
+// let p2 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     reject("promise2 is rejected");
+//   }, 3000);
+// });
+
+// let p3 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     reject("promise3 is rejected");
+//   }, 4000);
+// });
+
+// Promise.all([p1, p2, p3])
+//   .then((res) => {
+//     console.log("Response:", res);
+//   })
+//   .catch((e) => {
+//     console.log("Error", e);
+//   });
+
+// Promise.allSettled([p1, p2, p3])
+//   .then((res) => {
+//     console.log("Response:", res);
+//   })
+//   .catch((e) => {
+//     console.log("Error", e);
+//   });
+
+// Promise.race([p1, p2, p3])
+//   .then((res) => {
+//     console.log("Response:", res);
+//   })
+//   .catch((e) => {
+//     console.log("Error", e);
+//   });
+
+// Promise.any([p1, p2, p3])
+//   .then((res) => {
+//     console.log("Response:", res);
+//   })
+//   .catch((e) => {
+//     console.log("Error", e);
+//   });
+
+// let start = Date.now();
+
+// function temp() {
+//   return "I am called";
+// }
+
+// let p1 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve("promise1 is resolved");
+//   }, 2000);
+// });
+
+// let p2 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve("promise2 is resolved");
+//   }, 4000);
+// });
+// let start = Date.now();
+
+// async function temp1() {
+//   let data1 = await p1;
+//   console.log(data1);
+//   //   p1.then((res) => {
+//   //     console.log(res);
+//   //   });
+//   console.log("1");
+//   let data2 = await p2;
+//   console.log(data2);
+//   //   p2.then((res) => {
+//   //     console.log(res);
+//   //     // console.log("total time taken: ", Date.now() - start);
+//   //   });
+//   console.log("2");
+//   // p1.then((res) => {
+//   //   console.log(res);
+//   // });
+// }
+// // PersonA: 1, 2, p1, p2
+// // personS: p1, 1, p2, 2
+// // console.log(temp());
+// // console.log(temp1());
+// temp1();
+
+// console.log("End");
