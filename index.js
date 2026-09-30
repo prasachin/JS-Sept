@@ -720,3 +720,7 @@
 // temp1();
 
 // console.log("End");
+// let payload = new FormData();
+// payload.append("name", "sachin");
+// payload.append("age", 30);
+// payload.append("address", JSON.stringify({ city: "pune", state: "MH" }));
