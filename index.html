@@ -28,24 +28,26 @@
       <button id="ai">AI</button>
       <span id="aiOutput"></span>
     </div>
-    <div class="modal" id="ai-modal">
+    <div id="aiModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
-        <h2>AI Assistant</h2>
+        <h2>AI Modal</h2>
         <div class="instructions">
-          <h3>How to use:</h3>
+          <h3>How to use the AI feature:</h3>
           <ol>
-            <li>Click and drag to select cells in the grid.</li>
-            <li>write your prompt in the textarea below.</li>
-            <li>Click on the "Submit" button to get result beside toolbar.</li>
+            <li>Click and drag to select the cells. It will be highlighted.</li>
+            <li>Click the "AI" button. It will open the AI modal.</li>
+            <li>Write the prompt for the selected cells in human language.</li>
+            <li>Click the "Submit" button to get answers.</li>
           </ol>
         </div>
-        <h3>Prompt:</h3>
+        <p><strong>Prompt:</strong></p>
         <textarea
-          id="aiInstructions"
-          placeholder="e.g., provide me sum of selected cells..."
+          id="aiPrompt"
+          placeholder="Enter your prompt here..."
         ></textarea>
-        <button id="submitPrompt" class="btn-submit">Submit</button>
+        <div id="selectedCellsInfo" class="info"></div>
+        <button id="submitPrompt">Submit</button>
       </div>
     </div>
     <!-- Formula bar section  -->

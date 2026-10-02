@@ -218,3 +218,147 @@ function addDependencies(childRID, childCID, formula) {
     }
   }
 }
+let aiMode = false;
+let aiModal = document.querySelector("#aiModal");
+let aiBtn = document.querySelector("#ai");
+let closeBtn = document.querySelector(".close");
+let modalContent = document.querySelector(".modal-content");
+
+let modalOffsetX = 0;
+let modalOffsetY = 0;
+let isDragging = false;
+let startX = 0;
+let startY = 0;
+let selectedCells = new Set();
+
+aiBtn.addEventListener("click", function () {
+  if (!aiMode) {
+    aiModal.classList.add("show");
+    resetModalPosition();
+  } else {
+    aiModal.classList.remove("show");
+  }
+  aiMode = !aiMode;
+});
+
+closeBtn.addEventListener("click", function () {
+  aiMode = false;
+  aiModal.classList.remove("show");
+});
+
+modalContent.addEventListener("mousedown", function (e) {
+  if (e.target.closest(".close,textarea, button, input")) return;
+  let rect = modalContent.getBoundingClientRect();
+  modalContent.style.transform = "none";
+  modalOffsetX = e.clientX - rect.left;
+  modalOffsetY = e.clientY - rect.top;
+  isDragging = true;
+  e.preventDefault();
+});
+
+document.addEventListener("mousemove", function (e) {
+  if (!isDragging) return;
+  let newX = e.clientX - modalOffsetX;
+  let newY = e.clientY - modalOffsetY;
+  modalContent.style.left = newX + "px";
+  modalContent.style.top = newY + "px";
+});
+
+document.addEventListener("mouseup", function (e) {
+  isDragging = false;
+});
+
+function resetModalPosition() {
+  modalContent.style.left = "50%";
+  modalContent.style.top = "50%";
+  modalContent.style.transform = "translate(-50%, -50%)";
+}
+let selectionStartCell = null;
+
+cellContainer.addEventListener("mousedown", function (e) {
+  if (!aiMode) return;
+  selectionStartCell = e.target;
+  startX = e.clientX;
+  startY = e.clientY;
+});
+
+cellContainer.addEventListener("mousemove", function (e) {
+  if (!aiMode || !selectionStartCell) return;
+  let isMoved =
+    Math.abs(e.clientX - startX) > 4 || Math.abs(e.clientY - startY) > 4;
+  if (!isMoved) return;
+  let cell = e.target;
+  if (!cell.getAttribute("rid") || !cell.getAttribute("cid")) return;
+  selectedCells.add(cell);
+  cell.classList.add("selected");
+});
+
+cellContainer.addEventListener("mouseup", function (e) {
+  // console.log("Selected Cells:", selectedCells);
+  selectionStartCell = null;
+});
+
+let submitBtn = document.querySelector("#submitPrompt");
+let aiPromptInput = document.querySelector("#aiPrompt");
+let apiKey =
+  "";
+let aiResponseDiv = document.querySelector("#aiOutput");
+
+submitBtn.addEventListener("click", async function () {
+  if (selectedCells.size === 0) {
+    alert("Please select at least one cell to ask a question.");
+  }
+  if (aiPromptInput.value.trim() === "") {
+    alert("Please enter a question.");
+  }
+  let cells = Array.from(selectedCells).map((cell) => {
+    let rid = Number(cell.getAttribute("rid"));
+    let cid = Number(cell.getAttribute("cid"));
+    let address = String.fromCharCode(65 + cid) + (rid + 1);
+    return { address, rid, cid, value: cell.textContent };
+  });
+  // console.log("Selected Cells:", cells);
+  let question = aiPromptInput.value.trim();
+  // console.log("Question:", question);
+  let result = await CallAI(cells, question);
+  aiResponseDiv.textContent = result;
+});
+
+async function CallAI(cells, question) {
+  let promptText = `Please process this spreadsheet based on the following instructions:\n\nInstructions: ${question}\n\nCells:\n ${cells
+    .map((cell) => `${cell.address}: ${cell.value}`)
+    .join(
+      "\n",
+    )}\n\nRespond with only action and relevant information. Do not include any explanations or additional text.`;
+
+  // console.log("Prompt Text:", promptText);
+  try {
+    let response = await fetch(
+      "https://openrouter.ai/api/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+          model: "gpt-4o-mini",
+          messages: [
+            {
+              role: "user",
+              content: promptText,
+            },
+          ],
+        }),
+      },
+    );
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    let data = await response.json();
+    let aiResponse = data.choices[0].message.content;
+    aiModal.classList.remove("show");
+    return aiResponse;
+  } catch (e) {
+    aiResponseDiv.textContent = "Error occurred while calling AI.";
+    console.error("Error calling AI:", e);
+  }
+}
